@@ -3,6 +3,7 @@ var gameData = {
   , goldPerClick: 1
   , goldPerClickCost: 10
   , goldPerClickCostMult: 1.2
+  , lastTick: Date.now()
 }
 
 var saveGame = JSON.parse(localStorage.getItem("goldMinerSave"));
@@ -12,7 +13,7 @@ if (saveGame !== null){
 
 var mainGameLoop = window.setInterval(function(){
   mineGold();
-}, 1000)
+}, 100)
 
 var saveGameLoop = window.setInterval(function(){
   localStorage.setItem('goldMinerSave', JSON.stringify(gameData))
@@ -21,8 +22,10 @@ var saveGameLoop = window.setInterval(function(){
 
 
 function mineGold() {
-  gameData.gold += gameData.goldPerClick;
-  document.getElementById("goldMined").innerHTML = gameData.gold + " Gold Minedd";
+  diff = Date.now() - gameData.lastTick;
+  gameData.lastTick = Date.now();
+  gameData.gold += gameData.goldPerClick * (diff / 100);
+  document.getElementById("goldMined").innerHTML = gameData.gold + " Gold Mined";
 }
 
 function buyGoldPerClick(){
