@@ -29,6 +29,7 @@ function mineGold() {
 
 function autoMineGold() {
   diff = Date.now() - gameData.lastTick;
+  console.log(diff);
   gameData.lastTick = Date.now();
   gameData.gold += gameData.goldPerTick * (diff / 100);
   document.getElementById("goldMined").innerHTML = gameData.gold + " Gold Mined";
