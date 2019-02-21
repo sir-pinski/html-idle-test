@@ -3,6 +3,7 @@ var gameData = {
   , goldPerClick: 1
   , goldPerClickCost: 10
   , goldPerClickCostMult: 1.2
+  , goldPerTick: 1
   , lastTick: Date.now()
 }
 
@@ -12,7 +13,7 @@ if (saveGame !== null){
 }
 
 var mainGameLoop = window.setInterval(function(){
-  mineGold();
+  autoMineGold();
 }, 100)
 
 var saveGameLoop = window.setInterval(function(){
@@ -22,9 +23,14 @@ var saveGameLoop = window.setInterval(function(){
 
 
 function mineGold() {
+  gameData.gold += gameData.goldPerClick;
+  document.getElementById("goldMined").innerHTML = gameData.gold + " Gold Mined";
+}
+
+function mineGold() {
   diff = Date.now() - gameData.lastTick;
   gameData.lastTick = Date.now();
-  gameData.gold += gameData.goldPerClick * (diff / 100);
+  gameData.gold += gameData.goldPerTick * (diff / 100);
   document.getElementById("goldMined").innerHTML = gameData.gold + " Gold Mined";
 }
 
