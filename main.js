@@ -15,14 +15,14 @@ var mainGameLoop = window.setInterval(function(){
 }, 1000)
 
 var saveGameLoop = window.setInterval(function(){
-  localStorage.setItem('goldMinderSave', JSON.stringify(gameData))
+  localStorage.setItem('goldMinerSave', JSON.stringify(gameData))
 }, 15000)
 
 
 
 function mineGold() {
   gameData.gold += gameData.goldPerClick;
-  document.getElementById("goldMined").innerHTML = gameData.gold + " Gold Mined";
+  document.getElementById("goldMined").innerHTML = gameData.gold + " Gold Minedd";
 }
 
 function buyGoldPerClick(){
@@ -30,7 +30,7 @@ function buyGoldPerClick(){
     gameData.gold -= gameData.goldPerClickCost;
     gameData.goldPerClick += 1;
     gameData.goldPerClickCost *= gameData.goldPerClickCostMult;
-    document.getElementById("goldMinedd").innerHTML = gameData.gold + " Gold Mined";
+    document.getElementById("goldMined").innerHTML = gameData.gold + " Gold Mined";
     document.getElementById("perClickUpgrade").innerHTML = "Upgrade Pickaxe (Currently Level " + gameData.goldPerClick + ") Cost: " + gameData.goldPerClickCost + " gold.";
   }
 }
