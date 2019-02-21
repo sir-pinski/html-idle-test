@@ -7,10 +7,10 @@ var gameData = {
   , lastTick: Date.now()
 }
 
-var saveGame = JSON.parse(localStorage.getItem("goldMinerSave"));
-if (saveGame !== null){
-  gameData = savegame;
-}
+//var saveGame = JSON.parse(localStorage.getItem("goldMinerSave"));
+//if (saveGame !== null){
+//  gameData = savegame;
+//}
 
 var mainGameLoop = window.setInterval(function(){
   autoMineGold();
