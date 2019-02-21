@@ -14,16 +14,18 @@ if (saveGame !== null){
 
 var mainGameLoop = window.setInterval(function(){
   autoMineGold();
-}, 100)
+  console.log("loop");
+}, 1000)
 
 var saveGameLoop = window.setInterval(function(){
-  localStorage.setItem('goldMinerSave', JSON.stringify(gameData))
+  localStorage.setItem("goldMinerSave", JSON.stringify(gameData))
 }, 15000)
 
 
 
 function mineGold() {
   gameData.gold += gameData.goldPerClick;
+  console.log("mine");
   document.getElementById("goldMined").innerHTML = gameData.gold + " Gold Mined";
 }
 
